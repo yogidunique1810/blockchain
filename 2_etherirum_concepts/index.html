@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head><title>Gas Tracker</title></head>
+  <body>
+    <h2>Gas Used on Last Transaction: <span id="gasUsed">0</span></h2>
+    <button onclick="runTransaction()">Run Expensive Function</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.0/dist/web3.min.js"></script>
+    <script>
+      const contractAddress = "0x957dB621E6C9af3065925Bf357C3F9639405cfa8";
+      const abi = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "a",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "b",
+				"type": "uint256"
+			}
+		],
+		"name": "storeSum",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	}
+];
+
+      let web3 = new Web3(window.ethereum);
+      let contract = new web3.eth.Contract(abi, contractAddress);
+
+      async function runTransaction() {
+        const accounts = await web3.eth.getAccounts();
+        contract.methods.storeSum(5, 7).send({ from: accounts[0] })
+          .on("receipt", (receipt) => {
+            document.getElementById("gasUsed").innerText = receipt.gasUsed;
+            console.log("Gas used:", receipt.gasUsed);
+          });
+      }
+    </script>
+  </body>
+</html>

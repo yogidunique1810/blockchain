@@ -1,0 +1,38 @@
+🔖 // SPDX-License-Identifier: Unlicensed
+This is a license identifier comment added at the top of a Solidity file.
+
+🧠 Why is it there?
+Starting from Solidity 0.6.8, the compiler requires a license identifier to be specified for the source code, so that:
+
+Projects are more legally transparent
+
+Open-source licenses are easily trackable
+
+Reuse and redistribution of code is clearer
+
+🔍 What does Unlicensed mean?
+It means you do not grant others the rights to use, modify, or redistribute your code freely.
+
+Basically: "This code is not open source."
+
+Think of it like keeping your code private or proprietary by default.
+
+✅ Alternatives:
+If you're okay with open-source usage, you can use a common license:
+
+License Identifier	Meaning
+MIT	Very permissive, widely used in open source
+GPL-3.0	Requires others to also open-source derived work
+Apache-2.0	Open source with patent protection
+Unlicense	Public domain, no rights reserved
+Unlicensed	No one is allowed to use it unless you permit them
+Example:
+solidity
+Copy
+Edit
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+This would allow anyone to use, copy, modify, and even redistribute your smart contract as long as they mention you.
+
+So in short:
+✅ SPDX-License-Identifier: Unlicensed is a way to declare that your code is not freely usable or shareable.
